@@ -32,11 +32,12 @@ function check(){
             if (data.in_read === data.out_read) {
                 // прочитал
                 setTimeout(function(){
-                https.get(`https://api.vk.com/method/messages.delete?access_token=${tocken}&message_ids=${id}&v=5.103&random_id=` + gRI(1, 99999999999), (res) => {
-                });}, 400);
-                process.exit(1);
+                    https.get(`https://api.vk.com/method/messages.delete?access_token=${tocken}&message_ids=${id}&delete_for_all=1&v=5.103&random_id=` + gRI(1, 99999999999), (res) => {});
+                    // process.exit(1);
+                    }, 1);
+            } else {
+                setTimeout(check, 400);
             }
-            setTimeout(check,500);
         });
     });
 }
